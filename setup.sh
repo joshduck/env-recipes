@@ -14,8 +14,11 @@ abort()
 
 trap 'abort' 0
 
-sudo apt-get update
-sudo apt-get install tmux curl git -y
+if [ "$EUID" -ne 0 ]
+then
+  echo "Please run as root"
+  exit 1
+fi
 
 /bin/bash recipes/dotfiles.sh
 /bin/bash recipes/samba.sh

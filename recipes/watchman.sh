@@ -2,6 +2,7 @@
 set -e
 
 # Build tools
+cd ~
 apt-get install software-properties-common \
   build-essential \
   python-dev \
