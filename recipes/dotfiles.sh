@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -e -v
 
 cd ~
 git clone https://github.com/joshduck/dotfiles.git

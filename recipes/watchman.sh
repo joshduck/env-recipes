@@ -1,8 +1,7 @@
 #!/bin/bash
-set -e
+set -e -v
 
 # Build tools
-cd ~
 apt-get install software-properties-common \
   build-essential \
   python-dev \
@@ -11,14 +10,14 @@ apt-get install software-properties-common \
   autotools-dev \
   automake \
   pkg-config -y
-add-apt-repository ppa:ubuntu-toolchain-r/test
+add-apt-repository ppa:ubuntu-toolchain-r/test -y
 apt-get update
 apt-get install gcc-4.9 g++-4.9 -y
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 10
 update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 10
 
 # Clone and install
-cd
+cd ~
 git clone https://github.com/facebook/watchman.git --depth 1
 cd watchman
 git checkout v4.7.0

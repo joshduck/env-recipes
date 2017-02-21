@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -e -v
 
 hostname devbox
 apt-get install samba -y

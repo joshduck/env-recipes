@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -e -v
 
 apt-get install curl  -y
 apt-get purge nodejs npm -y
