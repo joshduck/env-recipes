@@ -4,9 +4,9 @@ set -e
 abort()
 {
     echo >&2 '
-!!!!!!!!!!!!!!!
-!!! ABORTED !!!
-!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!
+       ABORTED
+!!!!!!!!!!!!!!!!!!!!!
 '
     echo "An error occurred. Exiting..." >&2
     exit 1
@@ -20,18 +20,23 @@ then
   exit 1
 fi
 
-$RECIPES = "$(dirname $0)/recipes"
+RECIPES="$(dirname $0)/recipes"
 
-/bin/bash $RECIPES/dotfiles.sh
-/bin/bash $RECIPES/samba.sh
-/bin/bash $RECIPES/postgres.sh
-/bin/bash $RECIPES/watchman.sh
-/bin/bash $RECIPES/node.sh
+for STEP in dotfiles samba postgres watchman node
+do
+  echo >&2 "
+
+*********************
+ Running: $STEP
+*********************
+"
+  /bin/bash $RECIPES/$STEP.sh
+done
 
 trap : 0
 
 echo >&2 '
-************
-***  OK  ***
-************
+*********************
+         OK
+*********************
 '
